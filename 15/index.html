@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AJAX POST Request</title>
+  <style>
+    .response-container {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    
+    function sendPostRequest() {
+      var url = "https://api.example.com/submit";
+      var payload = {
+        name: "John Doe",
+        email: "johndoe@example.com"
+      };
+
+      var responseContainer = document.getElementById('responseContainer');
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+
+        .then(function(response) {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Error: ' + response.status);
+          }
+        })
+
+        .then(function(data) {
+
+          responseContainer.textContent = JSON.stringify(data, null, 2);
+        })
+
+        .catch(function(error) {
+          console.log(error);
+
+          responseContainer.textContent = 'Error occurred: ' + error.message;
+        });
+    }
+
+  </script>
+</head>
+<body>
+  <h1>AJAX POST Request</h1>
+  <button onclick="sendPostRequest()">Send POST Request</button>
+  <div id="responseContainer" class="response-container"></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Common Events</title>
+  <script>
+    // Event handler for mouse click
+    function handleClick(event) {
+      const x = event.clientX;
+      const y = event.clientY;
+      alert(`Clicked at (${x}, ${y})`);
+    }
+
+    // Event handler for key press
+    function handleKeyPress(event) {
+      const keyCode = event.keyCode || event.which;
+      alert(`Key Pressed: ${keyCode}`);
+    }
+
+    // Event handler for mouse over image
+    function handleMouseOver() {
+      const image = document.getElementById('myImage');
+      image.src = '../img/img-1.jpeg';
+    }
+  </script>
+</head>
+<body onclick="handleClick(event)" onkeydown="handleKeyPress(event)">
+  <h1>JavaScript Common Events</h1>
+  <img id="myImage" src="../img/img-2.jpeg" onmouseover="handleMouseOver()">
+</body>
+</html>
+
+
